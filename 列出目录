@@ -1,0 +1,22 @@
+<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+
+		<script type="text/javascript">
+			function getFolder(){
+				var fso = new ActiveXObject("Scripting.FileSystemObject");  
+				var folder = fso.GetFolder("C:\\Users\\Administrator\\Desktop\\报表系统");   
+				var folderList = new Enumerator(folder.SubFolders);
+				var folderHtml = "";
+			     	for(; !folderList.atEnd(); folderList.moveNext()){
+					folderHtml += "<b id=\""+folderList.item().Name+"\">"+folderList.item().Name+"</b> ";
+      				}
+				$("#folderList").html(folderHtml);
+			}
+			function getFiles(){
+				var fso = new ActiveXObject("Scripting.FileSystemObject");  
+				var folder = fso.GetFolder("C:\\test");   
+				var filesList = new Enumerator(folder.Files);  
+				for (; !filesList.atEnd(); filesList.moveNext()){       
+					alert(filesList.item().Name + "<br>");  
+				}   
+		}
+</script>
